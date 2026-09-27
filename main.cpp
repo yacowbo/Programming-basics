@@ -2,6 +2,7 @@
 #include <iomanip>
 using namespace std;
 
+
 struct Calculator{
 	float numA, numB;
 	char Operate;
@@ -9,14 +10,9 @@ struct Calculator{
 	float result;
 	
 	void GetNums() {
-		cout << "please, enter two numbes which are either whole or decimal numbers." << endl;
-		cout << "please, enter your first number: ";
 		cin >> numA;
-		cout << endl;
-		cout << "Please, enter your second number: ";
 		cin >> numB;
-		cout << endl;
-		cout << "Your numbes are: " << numA << numB << endl;
+		cout << "You entered: " << numA << " and " << numB << endl;
 		}
 	
 		/* this is the function im having a problem with,
@@ -46,21 +42,34 @@ struct Calculator{
 	};
 		
 	int Calculate() {
-		result = numA + Operate + numB;
-	
-	return result;
+		switch(Operate) {
+			case '+':
+				result = numA + numB;
+				break;
+			case '-':
+				result = numA - numB;
+				break;
+			case '*':
+				result = numA * numB;
+				break;
+			case '/':
+				result = numA / numB;
+				break;
+		}
+		return result;
 	};
 };
 
 
 int main() {
 	Calculator _Calculator1;
-	
+	cout << "Please enter two numbers: " << endl;
 	_Calculator1.GetNums();
 	_Calculator1.GetOperate();
 	
 	_Calculator1.Calculate();
 	
+	cout << "Your equation is: ";
 	cout << _Calculator1.numA << _Calculator1.Operate << _Calculator1.numB << "=";
 	cout << _Calculator1.result << endl;
 	return 0;
